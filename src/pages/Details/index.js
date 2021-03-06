@@ -14,7 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const deviceWidth = Dimensions.get('window').width;
 
-export default function DetailsScreen({route}) {
+const DetailsScreen = ({route}) => {
   const {item} = route.params;
   const nav = useNavigation();
 
@@ -43,7 +43,9 @@ export default function DetailsScreen({route}) {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+
+export default DetailsScreen;
 
 const styles = StyleSheet.create({
   container: {
