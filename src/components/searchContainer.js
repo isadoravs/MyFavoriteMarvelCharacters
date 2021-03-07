@@ -12,7 +12,7 @@ const SearchContainer = () => {
   const [value, setValue] = useState(query);
 
   useEffect(() => {
-    const timeOutId = setTimeout(() => dispatch(addQuery(value)), 500);
+    const timeOutId = setTimeout(() => dispatch(addQuery(value)), 1000);
     return () => clearTimeout(timeOutId);
   }, [dispatch, value]);
 
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     color: Colors.placeholder,
   },
   closeIcon: (value) => ({
-    marginEnd: 11,
+    marginEnd: 12,
     marginStart: 11,
     color: value !== '' ? Colors.icons : Colors.placeholder,
   }),

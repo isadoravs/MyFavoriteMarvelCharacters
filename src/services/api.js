@@ -1,6 +1,11 @@
 import axios from 'axios';
 import md5 from 'md5';
 
+/*
+ * IMPORTANTE:
+ * CRIAR ARQUIVO .env COM AS CHAVES DA API
+ */
+
 import {API_PUBLIC_KEY, API_PRIVATE_KEY} from 'react-native-dotenv';
 
 const api = axios.create({

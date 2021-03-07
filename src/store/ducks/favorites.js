@@ -1,9 +1,6 @@
 const Types = {
   ADD_FAVORITE: 'favorite/ADD',
   REMOVE_FAVORITE: 'favorite/REMOVE',
-  GET_FAVORITES: 'favorite/LOAD',
-  GET_FAVORITES_SUCCESS: 'favorite/LOAD_SUCCESS',
-  GET_FAVORITES_FAIL: 'favorite/LOAD_FAIL',
 };
 
 const initialState = {

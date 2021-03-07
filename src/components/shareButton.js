@@ -2,6 +2,7 @@ import React from 'react';
 import {Share, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Snackbar from 'react-native-snackbar';
 
 import Colors from '~/styles/colors';
 
@@ -14,7 +15,10 @@ const ShareButton = () => {
         message: nameList.toString(),
       });
     } catch (error) {
-      console.log(error.message);
+      Snackbar.show({
+        text: error.message,
+        duration: Snackbar.LENGTH_SHORT,
+      });
     }
   };
   return (

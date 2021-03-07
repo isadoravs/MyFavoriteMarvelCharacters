@@ -9,7 +9,7 @@ import SearchContainer from '~/components/searchContainer';
 
 const Stack = createStackNavigator();
 
-const isFavorite = (route) => {
+const isFavoriteTab = (route) => {
   const routeName = route.state
     ? route.state.routes[route.state.index].name
     : route.params?.screen || 'Home';
@@ -23,7 +23,7 @@ const InitialRoute = () => (
       name="HomeTabs"
       component={HomeTabs}
       options={({route}) =>
-        isFavorite(route)
+        isFavoriteTab(route)
           ? {
               title: '',
               headerStyle: {

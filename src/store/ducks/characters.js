@@ -1,10 +1,10 @@
 import api from '~/services/api';
 
 export const Types = {
-  GET_PAGE: 'page/LOAD',
+  LOADING_START: 'loading/START',
   GET_PAGE_SUCCESS: 'page/LOAD_SUCCESS',
   GET_PAGE_FAIL: 'page/LOAD_FAIL',
-  REFRESH_PAGE: 'page/REFRESH',
+  RESET_STATE: 'state/RESET',
 };
 
 const initialState = {
@@ -18,7 +18,7 @@ const ITEMS_PER_PAGE = 20;
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case Types.GET_PAGE:
+    case Types.LOADING_START:
       return {...state, loading: true};
     case Types.GET_PAGE_SUCCESS:
       return {
@@ -32,26 +32,26 @@ export default function reducer(state = initialState, action) {
       };
     case Types.GET_PAGE_FAIL:
       return {...state, loading: false, error: action.error};
-    case Types.REFRESH_PAGE:
+    case Types.RESET_STATE:
       return initialState;
     default:
       return state;
   }
 }
 
-export const getPage = (value, index, refresh) => async (dispatch) => {
+export const getPage = (value, index, reset) => async (dispatch) => {
   dispatch({
-    type: Types.GET_PAGE,
+    type: Types.LOADING_START,
   });
 
-  if (refresh) {
+  if (reset) {
     dispatch({
-      type: Types.REFRESH_PAGE,
+      type: Types.RESET_STATE,
     });
   }
 
   const search = value ? `&nameStartsWith=${value}` : '';
-  const offset = (refresh ? 0 : index) * ITEMS_PER_PAGE;
+  const offset = (reset ? 0 : index) * ITEMS_PER_PAGE;
 
   try {
     const res = await api.get(

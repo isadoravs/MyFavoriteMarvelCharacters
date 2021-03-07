@@ -3,7 +3,7 @@ import {View, StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import Snackbar from 'react-native-snackbar';
 import {getPage} from '~/store/ducks/characters';
-import ItemList from '~/components/itemListCharacter';
+import ItemListCharacter from '~/components/itemListCharacter';
 import Loading from '~/components/loading';
 import EmptyContainer from '~/components/emptyContainer';
 import Colors from '~/styles/colors';
@@ -35,12 +35,12 @@ const HomeScreen = () => {
   }
 
   const nextPage = useCallback(
-    (refresh) => {
-      if (characters.length < totalItems || refresh) {
-        if (refresh) {
+    (reset) => {
+      if (characters.length < totalItems || reset) {
+        if (reset) {
           setIndex(0);
         }
-        dispatch(getPage(query, index, refresh));
+        dispatch(getPage(query, index, reset));
       }
     },
     [characters.length, dispatch, index, query, totalItems],
@@ -52,7 +52,7 @@ const HomeScreen = () => {
         {totalItems ? (
           <FlatList
             data={characters}
-            renderItem={({item}) => <ItemList item={item} />}
+            renderItem={({item}) => <ItemListCharacter item={item} />}
             keyExtractor={(item) => item.id.toString()}
             onEndReached={() => setIndex(index + 1)}
             onEndReachedThreshold={0.5}
