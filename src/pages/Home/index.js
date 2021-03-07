@@ -1,12 +1,12 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import {View, StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import {View, FlatList, SafeAreaView} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import Snackbar from 'react-native-snackbar';
 import {getPage} from '~/store/ducks/characters';
 import ItemListCharacter from '~/components/itemListCharacter';
 import Loading from '~/components/loading';
 import EmptyContainer from '~/components/emptyContainer';
-import Colors from '~/styles/colors';
+import {styles} from './styles';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -72,13 +72,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-  },
-  containerStyle: {
-    flexGrow: 1,
-  },
-});

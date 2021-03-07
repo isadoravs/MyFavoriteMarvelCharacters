@@ -1,9 +1,9 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {View, StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import {View, FlatList, SafeAreaView} from 'react-native';
 import ItemList from '~/components/itemListCharacter';
 import EmptyContainer from '~/components/emptyContainer';
-import Colors from '~/styles/colors';
+import {styles} from './styles';
 
 const FavoriteScreen = () => {
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -26,13 +26,3 @@ const FavoriteScreen = () => {
 };
 
 export default FavoriteScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-  },
-  containerStyle: {
-    flexGrow: 1,
-  },
-});
